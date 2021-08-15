@@ -7,6 +7,6 @@ Como se pudo observar, QtDesigner cuenta con muchos QWidgets disponibles. En est
 - [Ejemplo Proyecto](https://juan-suarezp.github.io/PyQt/content/ejemploproyecto.html)
 - [Ejemplo Figura 3D](https://juan-suarezp.github.io/PyQt/content/3D.html)
 
-Para descargar los ejemplos (y todos los archivos de este repositorio), se debe seleccionar el botón verde `Code` que está en la parte superior derecha de la página principal del repositorio y luego seleccionar la opción `Download ZIP`. Después de descomprimir el archivo .ZIP, los archivos .ui y .py de los ejemplos estarán en la carpeta `ejemplos`.
+Para descargar los ejemplos, se debe seleccionar el botón verde `Code` que está en la parte superior derecha de la página principal del [repositorio](https://github.com/juan-suarezp/PyQt) y luego seleccionar la opción `Download ZIP`. Después de descomprimir el archivo .ZIP, los archivos .ui y .py de los ejemplos estarán en la carpeta `content/ejemplos`.
 
-![guardarEjemplos](https://user-images.githubusercontent.com/58320351/111403407-e92c1d00-869a-11eb-81e6-c70159c482ab.png)
+![guardarEjemplos](https://user-images.githubusercontent.com/58320351/129465912-886fcdf5-6ba7-4191-bcde-8c8b5f7a5e61.png)
