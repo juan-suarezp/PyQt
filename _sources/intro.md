@@ -1,104 +1,154 @@
-# Tkinter
-````{admonition} Departamento de Ingeniería Eléctrica - Facultad de Ingeniería - Universidad de Antioquia
-Este repositorio es una guía para los estudiantes de ingeniería eléctrica que están cursando algoritmos y programación/computación numérica en la Universidad de Antioquia.
+## Este repositorio es una guía para los estudiantes de ingeniería eléctrica que están cursando algoritmos y programación/computación numérica en la Universidad de Antioquia.
 
-```{note}
-Versión de Python: 3.8
-```
-````
+# PyQt
+PyQt es una librería de Python que permite crear interfaz gráfica de usuario (GUI en inglés) al igual que [Tkinter](https://github.com/juan-suarezp/PythonTkinterTutorial). Aunque PyQt brinda la posibilidad de crear GUI de una forma similar, en este caso haremos uso de la herramienta QtDesigner que facilita mucho el proceso de crear una interfaz.
 
-Tkinter es una librería de Python que permite crear interfaz gráfica de usuario (GUI en inglés). Es la librería que viene por defecto con la instalación de Python; esto no significa que otras alternativas, como por ejemplo [PyQt](https://github.com/juan-suarezp/PythonPyQtTutorial), sean más potentes que Tkinter.
+## GUI con PyQt y Qt Designer
+Lo primero es abrir el Qt Designer, nos encontraremos con lo siguiente:
 
-## GUI con Tkinter
-El primer paso para crear una GUI es crear la ventana principal (`Tk`), como se muestra en el siguiente código:
+![designer](https://user-images.githubusercontent.com/58320351/111403289-b6822480-869a-11eb-9f70-31bf8a582f72.png)
 
-```python
-import tkinter as tk
+Luego seleccionamos "Main window" y presionamos el botón crear. Ahora aparecerá una ventana con dos QWidgets (así se llaman los elementos en Qt) llamados "menubar" y "statusbar".
 
-ventana = tk.Tk()
-ventana.mainloop()
-```
+![designerMainWindow](https://user-images.githubusercontent.com/58320351/111403327-c26de680-869a-11eb-984d-8fcde92a385b.png)
 
-El resultado es el siguiente:
+Los principales elementos, además de la barra superior de herramientas, de Qt designer son:
+1. **Caja de Widgets**, como su nombre lo indica, es donde están almacenados todos los QWidgets disponibles en Qt.
+2. Aquí se muestran las ventanas que estamos creando.
+3. **Inspector de objetos**, donde se listan todos los QWidgets que se estén usando.
+4. **Editor de propiedades**, donde se pueden ver y editar las propiedades del QWidget seleccionado en el inspector de objetos (3.).
 
-![ventana](https://user-images.githubusercontent.com/58320351/128613754-7121acb1-4fa8-4d74-a703-561d961e0652.png)
+A continuación, debemos arrastrar desde la caja de widgets (1.) hasta la ventana en 2. los elementos o QWidgets que queremos usar en nuestra interfaz. Por ejemplo, si arrastramos un botón (QPushButton) y una etiqueta (QLabel), el resultado será el siguiente:
 
-Una aplicación solo puede tener una `Tk`, debido a que es la raiz del programa y el primer widget que se debe crear; por lo tanto, cerrar la `Tk` cerraría la GUI. Existen otro tipo de ventanas llamadas `Toplevel` que son ventanas de la aplicación, la diferencia con la `Tk` es que al cerrar una ventana `Toplevel` destruirá todos los widgets secundarios colocados en esa ventana pero no cerrará el programa. Es importante resaltar que, además de la `Tk` y las ventanas `Toplevel`, existen algunas ventanas predeterminadas como las de [Filedialog](https://juan-suarezp.github.io/Tk/content/filedialog.html) o las de [Messagebox](https://juan-suarezp.github.io/Tk/content/messagebox.html) y otros widgets como los [Frames](https://juan-suarezp.github.io/Tk/content/frame.html) y [Labelframes](https://juan-suarezp.github.io/Tk/content/labelframe.html) que sirven como contenedores de otros widgets.
+![designerEjemplo](https://user-images.githubusercontent.com/58320351/111403337-c7cb3100-869a-11eb-8e7d-9916a7dac6eb.png)
 
-Una vez se tiene la ventana principal, lo siguiente es agregar los botones, entradas, labels y demás widgets que necesitemos. Para esto, Tkinter cuenta con tres mecanismos para gestionar la geometría de los widgets de nuestra GUI: los métodos `pack()`, `grid()` y `place()`.
+Podemos ver en el inspector de objetos (3.) como se agregan los nuevos QWidgets a la lista:
 
-### Pack
-Este mecanismo para gestionar la geometría de los widgets los organiza en bloques antes de ubicarlos en el widget principal. Veamos un ejemplo simple con algunos botones:
+![designerInspector](https://user-images.githubusercontent.com/58320351/111403343-cbf74e80-869a-11eb-9c73-ef0dae3f78fb.png)
 
-```python
-import tkinter as tk
+Es importante tener en cuenta el nombre que se le da a los QWidgets en el inspector de objetos, debido a que este nombre nos servirá para conectar los objetos de la ventana con los métodos y funciones que vayamos a usar luego. En este ejemplo no usaremos los QWidgets iniciales "menubar" y "statusbar", por lo que los eliminamos dando click derecho sobre su nombre en el inspector de objetos o directamente sobre el objeto en la ventana.
 
-ventana = tk.Tk()
+Como se puede observar, con Qt Designer es posible configurar la apariencia inicial de nuestra ventana más fácil que con Tkinter. Por ejemplo, si queremos cambiar el texto inical de la etiqueta o del botón, basta con seleccionar el texto y escribir lo que queremos que aparezca. También permite cambiar los tamaños y demás opciones como el color (ver opción "palette" en el editor de propiedades):
 
-boton1 = tk.Button(ventana, text="1")
-boton1.pack(side="top")
-boton2 = tk.Button(ventana, text="2")
-boton2.pack(side="top")
-boton3 = tk.Button(ventana, text="3")
-boton3.pack(side="left")
-boton4 = tk.Button(ventana, text="4")
-boton4.pack(side="bottom")
+![designerApariencia](https://user-images.githubusercontent.com/58320351/111403351-d0bc0280-869a-11eb-8bf9-cbeb0e593c97.png)
 
-ventana.mainloop()
-```
-![ventanapack](https://user-images.githubusercontent.com/58320351/128613760-e41cec97-9c6c-438e-81d5-5a7886e6af01.png)
-
-
-Se puede observar que se respeta el orden en que se "empacan" los widgets. Esto se observa claramente con los botones 1 y 2, los cuales tienen `side = "top"`, como el botón 1 está primero, se respeta y queda sobre el botón 2 que después queda sobre los widgets que se ubiquen después. Es un método muy útil cuando se va a crear una aplicación con pocos widgets.
-
-[Aquí](https://www.tutorialspoint.com/python/tk_pack.htm) para ver más sobre el método pack.
-
-### Grid
-Este mecanismo para gestionar la geometría de los widgets los organiza en una tabla en el widget principal. Veamos el ejemplo anterior con este método:
+El siguiente paso es guardar el archivo .ui de Qt designer. En este caso lo llamaremos "Ejemplo.ui". Luego, desde Python abriremos este archivo .ui para conectar funciones y métodos a los elementos que agreguemos a nuestra interfaz, con el siguiente código:
 
 ```python
-import tkinter as tk
+# -*- coding: utf-8 -*-
+"""
+Ejemplo de ventana básico con botón para cambiar texto
 
-ventana = tk.Tk()
+"""
+#importamos las librerías necesarias
+import sys
+from PyQt5 import QtWidgets, uic
 
-boton1 = tk.Button(ventana, text="1")
-boton1.grid(row=0, column=0)
-boton2 = tk.Button(ventana, text="2")
-boton2.grid(row=1, column=1)
-boton3 = tk.Button(ventana, text="3")
-boton3.grid(row=2, column=2)
-boton4 = tk.Button(ventana, text="4")
-boton4.grid(row=3, column=3)
+#Carga la interfaz gráfica y conecta los botones
+class Ventana(QtWidgets.QMainWindow):
+    '''Esta es la clase principal'''
+    #Inicializamos la ventana y conectamos los botones
+    def __init__(self, padre=None):
+        #Inicializa la ventana
+        QtWidgets.QMainWindow.__init__(self, padre)
+        uic.loadUi("Ejemplo.ui",self) #Lee el archivo de QtDesigner
+        
+        self.setWindowTitle("Ejemplo") #Título de la ventana
+        
+        #Conectar botón a función
+        self.pushButton.clicked.connect(self.funcion)
+        
+    def funcion(self):
+        if self.label.text() == "":
+            self.label.setText("Hola clase")
+        else:
+            self.label.setText("")
 
-ventana.mainloop()
+
+# se crea la instancia de la aplicación
+app = QtWidgets.QApplication(sys.argv)
+# se crea la instancia de la ventana
+miVentana = Ventana()
+# se muestra la ventana 
+miVentana.show()
+# se entrega el control al sistema operativo
+sys.exit(app.exec_())
 ```
-![ventanagrid](https://user-images.githubusercontent.com/58320351/128613762-43fd36e9-fc90-4b16-92e2-1537ae146f05.png)
 
-Este método permite ubicar los widgets indicando la fila y la columna. Por defecto, el tamaño de las filas y columnas está dado por los widgets que estén ubicados en ellas, pero es posible cambiar el tamaño y combinar filas o columnas. Este método es muy útil cuando las aplicaciones contienen muchos widgets.
+Al ejecutar, el resultado es el siguiente:
 
-[Aquí](https://www.tutorialspoint.com/python/tk_grid.htm) para ver más sobre el método grid.
+![resultado](https://user-images.githubusercontent.com/58320351/111403367-d7e31080-869a-11eb-873d-560703dc348f.png)
 
-### Place
-Este mecanismo para gestionar la geometría de los widgets permite ubicarlos en una posición específica en el widget principal. continuando con el ejemplo anterior:
+En general, el procedimiento para crear una interfaz con PyQt y QtDesigner es el mismo siempre. Se crea la interfaz en QtDesigner y en Python se lee el archivo .ui y se conectan los QWidgets con los métodos y funciones.
 
 ```python
-import tkinter as tk
+# -*- coding: utf-8 -*-
+"""
+Ejemplo de ventana básico con botón para cambiar texto
 
-ventana = tk.Tk()
-
-boton1 = tk.Button(ventana, text="1")
-boton1.place(x=0, y=0)
-boton2 = tk.Button(ventana, text="2")
-boton2.place(x=100, y=0)
-boton3 = tk.Button(ventana, text="3")
-boton3.place(x=100, y=100)
-boton4 = tk.Button(ventana, text="4")
-boton4.place(x=0, y=100)
-
-ventana.mainloop()
+"""
+#importamos las librerías necesarias
+import sys
+from PyQt5 import QtWidgets, uic
 ```
-![ventanaplace](https://user-images.githubusercontent.com/58320351/128613764-209a56e3-cf08-4292-b955-f96c99c6ae66.png)
+En esta parte del código se importan las liberías necesarias para abrir el archivo .ui y trabajar con PyQt.
 
-Este método tiene la ventaja de que permite ubicar exactamente donde se quiere los widgets, pero hay que tener cuidado con su tamaño. Cuando son muchos widgets se vuelve problemático ubicarlos todos.
+```python
+class Ventana(QtWidgets.QMainWindow):
+    '''Esta es la clase principal'''
+    #Inicializamos la ventana y conectamos los botones
+    def __init__(self, padre=None):
+        #Inicializa la ventana
+        QtWidgets.QMainWindow.__init__(self, padre)
+        uic.loadUi("Ejemplo.ui",self) #Lee el archivo de QtDesigner
+```
 
-[Aquí](https://www.tutorialspoint.com/python/tk_place.htm) para ver más sobre el método place.
+Luego se carga la interfaz y se inicializa la clase `Ventana`. En la última línea podemos ver cómo se carga el archivo.ui que creamos en QtDesigner.
+
+```python
+        self.setWindowTitle("Ejemplo") #Título de la ventana
+        
+        #Conectar botón a función
+        self.pushButton.clicked.connect(self.funcion)
+        
+    def funcion(self):
+        if self.label.text() == "":
+            self.label.setText("Hola clase")
+        else:
+            self.label.setText("")
+```
+
+En lo que sigue, se cambia el título de la ventana (también se puede cambiar desde QtDesigner) y se conecta el botón con el método `funcion`. Este método cambia el texto del label que hay en la ventana; si está vacío pone el mensaje "Hola clase", si tiene el mensaje, lo quita.
+
+```python
+# se crea la instancia de la aplicación
+app = QtWidgets.QApplication(sys.argv)
+# se crea la instancia de la ventana
+miVentana = Ventana()
+# se muestra la ventana 
+miVentana.show()
+# se entrega el control al sistema operativo
+sys.exit(app.exec_())
+```
+
+Finalmente, se crea la instancia de la clase `Ventana` y se ejecuta la aplicación.
+
+Este es un ejemplo muy sencillo pero muestra el procedimiento general para crear una interfaz usando PyQt y QtDesigner.
+
+## Ejemplos
+Como se pudo observar, QtDesigner cuenta con muchos QWidgets disponibles. En esta parte se listan algunos ejemplos con los QWidgets que más se utilizan. [Aquí](https://doc.qt.io/qt-5/widget-classes.html#the-widget-classes) podemos encontrar las propiedades y señales de los QWidgets necesarias para conectarlos con los métodos y funciones en el código ([Leer documentación de Qt para usar PyQt](https://stackoverflow.com/questions/60422323/where-is-the-pyqt5-documentation-for-classes-methods-and-modules)).
+- [Ejemplo 1](https://github.com/juan-suarezp/PythonPyQtTutorial/blob/master/ejemplos/ejemplo1/ejemplo1.md) - *QPushButton, QRadiobutton, QCheckBox.*
+- [Ejemplo 2](https://github.com/juan-suarezp/PythonPyQtTutorial/blob/master/ejemplos/ejemplo2/ejemplo2.md) - *QPushButton, QLabel, QFrame, QComboBox, QLineEdit.*
+- [Ejemplo 3](https://github.com/juan-suarezp/PythonPyQtTutorial/blob/master/ejemplos/ejemplo3/ejemplo3.md) - *FileDialog, QPushButton, QListWidget, QTabWidget, QLabel.*
+- [Matplotlib](https://github.com/juan-suarezp/PythonPyQtTutorial/blob/master/ejemplos/matplotlib/maplotlib.md)
+- [Ejemplo Proyecto](https://github.com/juan-suarezp/PythonPyQtTutorial/blob/master/ejemplos/ejemploproyecto/ejemploproyecto.md)
+- [Ejemplo Figura 3D](https://github.com/juan-suarezp/PythonPyQtTutorial/blob/master/ejemplos/3D/3D.md)
+
+Para descargar los ejemplos (y todos los archivos de este repositorio), se debe seleccionar el botón verde `Code` que está en la parte superior derecha de la página principal del repositorio y luego seleccionar la opción `Download ZIP`. Después de descomprimir el archivo .ZIP, los archivos .ui y .py de los ejemplos estarán en la carpeta `ejemplos`.
+
+![guardarEjemplos](https://user-images.githubusercontent.com/58320351/111403407-e92c1d00-869a-11eb-81e6-c70159c482ab.png)
+
+## Instalar Qt Designer
+Instalar la última versión de "pyqt5-tools" usando `pip install pyqt5-tools --pre`.
+
+El "designer.exe" estará instalado en `...python\Lib\site-packages\qt5_applications\Qt\bin`.
