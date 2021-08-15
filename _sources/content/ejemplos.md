@@ -9,4 +9,4 @@ Como se pudo observar, QtDesigner cuenta con muchos QWidgets disponibles. En est
 
 Para descargar los ejemplos, se debe seleccionar el botón verde `Code` que está en la parte superior derecha de la página principal del [repositorio](https://github.com/juan-suarezp/PyQt) y luego seleccionar la opción `Download ZIP`. Después de descomprimir el archivo .ZIP, los archivos .ui y .py de los ejemplos estarán en la carpeta `content/ejemplos`.
 
-![guardarEjemplos](https://user-images.githubusercontent.com/58320351/129465912-886fcdf5-6ba7-4191-bcde-8c8b5f7a5e61.png)
+![guardarEjemplos](https://user-images.githubusercontent.com/58320351/129465970-8bf161ac-877a-4d89-b2c8-1c2e446d4b8a.png)
