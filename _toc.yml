@@ -1,32 +1,9 @@
 - file: intro
-- file: content/widgets
+- file: content/ejemplos
   sections:
-  - file: "content/button"
-  - file: "content/canvas"
-  - file: "content/checkbutton"
-  - file: "content/colorchooser"
-  - file: "content/combobox"
-  - file: "content/entry"
-  - file: "content/filedialog"
-  - file: "content/frame"
-  - file: "content/label"
-  - file: "content/labelframe"
-  - file: "content/listbox"
-  - file: "content/menu"
-  - file: "content/menubutton"
-  - file: "content/message"
-  - file: "content/messagebox"
-  - file: "content/notebook"
-  - file: "content/panedwindow"
-  - file: "content/progressbar"
-  - file: "content/radiobutton"
-  - file: "content/scale"
-  - file: "content/scrollbar"
-  - file: "content/spinbox"
-  - file: "content/text"
-- file: content/otros
-  sections:
+  - file: "content/ejemplo1"
+  - file: "content/ejemplo2"
+  - file: "content/ejemplo3"
   - file: "content/matplotlib"
+  - file: "content/ejemploproyecto"
   - file: "content/3D"
-  - file: "content/eventos"
-  - file: "content/proyecto"
