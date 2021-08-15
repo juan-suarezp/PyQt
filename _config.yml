@@ -10,7 +10,7 @@ author: Juan Esteban Suarez / Ingeniería eléctrica / Universidad de Antioquia
 logo: logo.jpg
 
 repository:
-   url: https://github.com/juan-suarezp/Tk
+   url: https://github.com/juan-suarezp/PyQt
    branch: master
 
 launch_buttons:
